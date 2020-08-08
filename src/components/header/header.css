@@ -1,0 +1,25 @@
+@import '../font-css/index.css';
+
+.header{
+    font-family: "DreamWood";
+    flex-direction: column;
+}
+.top-panel{
+    justify-content: space-between;
+    align-items: center;
+}
+.header_title{
+    font-size: 4rem;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 53%, rgba(0,212,255,1) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 10px 0 0
+}
+.score{
+    font-size: 2.25rem;
+}
+.score span{
+    font-family: Lato;
+    font-size: 2rem;
+    
+}

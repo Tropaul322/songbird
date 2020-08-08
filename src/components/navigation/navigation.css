@@ -1,0 +1,29 @@
+
+.pagination{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 25px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.header ul li{
+    flex: auto;
+    text-align: center;
+}
+.page-item.active .page-link{
+    background-color: rgba(0,212,255,1);
+    color: rgb(32, 54, 78)
+
+}
+.page-item .page-link{
+    cursor: auto;
+    font-size: 1rem;
+    background-color: rgb(8, 60, 121);
+    z-index: 3;
+    color: #fff;
+    border-color: transparent;
+    font-family: sans-serif;
+    user-select: none;
+}

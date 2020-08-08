@@ -41,7 +41,7 @@ module.exports = (env, options) => {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
           use: [
             {
-              loader: 'file-loader',
+              loader: 'url-loader',
               options: {
                 name: '[path][name].[ext]',
               },
@@ -85,8 +85,8 @@ module.exports = (env, options) => {
       new CopyPlugin({
         patterns: [
           { from: 'src/assets/images', to: 'src/assets/images' },
-          /* { from: 'src/assets/svg', to: 'src/assets/svg' },
-          { from: 'src/assets/fonts', to: 'src/assets/fonts' }, */
+/*           { from: 'src/assets/svg', to: 'src/assets/svg' }, */
+          { from: 'src/assets/fonts', to: 'src/assets/fonts' },
         ],
       }),
       new MiniCssExtractPlugin({
