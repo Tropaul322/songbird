@@ -1,4 +1,4 @@
-
+@import '../../css-constants/index.scss';
 .pagination{
     justify-content: space-between;
     flex-wrap: wrap;
@@ -13,14 +13,14 @@
     text-align: center;
 }
 .page-item.active .page-link{
-    background-color: rgba(0,212,255,1);
-    color: rgb(32, 54, 78)
+    background-color: $main-color;
+    color: $black
 
 }
 .page-item .page-link{
     cursor: auto;
     font-size: 1rem;
-    background-color: rgb(8, 60, 121);
+    background-color: $secondary-color;
     z-index: 3;
     color: #fff;
     border-color: transparent;
