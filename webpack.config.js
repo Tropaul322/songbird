@@ -41,7 +41,7 @@ module.exports = (env, options) => {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
           use: [
             {
-              loader: 'url-loader',
+              loader: 'file-loader',
               options: {
                 name: '[path][name].[ext]',
               },
@@ -79,7 +79,7 @@ module.exports = (env, options) => {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './public/index.html',
-        // favicon: 'src/assets/favicon/favicon.ico',
+        /* favicon: 'src/assets/favicon/favicon.ico', */
         chunks: ['index'],
       }),
       new CopyPlugin({

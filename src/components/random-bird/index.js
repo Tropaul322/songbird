@@ -1,3 +1,3 @@
-import RandomBird from './random-bird'
+import RandomBird from './random-bird';
 
-export default RandomBird
+export default RandomBird;

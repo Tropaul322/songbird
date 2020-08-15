@@ -1,3 +1,3 @@
-import AnswerBlock from './answer-block'
+import AnswerBlock from './answer-block';
 
-export default AnswerBlock
+export default AnswerBlock;

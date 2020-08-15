@@ -1,29 +1,35 @@
-@import '../../css-constants/index.scss';
-.pagination{
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0;
-    margin-top: 25px;
-    border-radius: 5px;
-    overflow: hidden;
+@import "../../css-constants/index.scss";
+.pagination {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding: 0;
+  overflow: hidden;
+
+  border-radius: 5px;
 }
 
-.header ul li{
-    flex: auto;
-    text-align: center;
-}
-.page-item.active .page-link{
-    background-color: $main-color;
-    color: $black
+.header ul li {
+  flex: auto;
 
+  text-align: center;
 }
-.page-item .page-link{
-    cursor: auto;
-    font-size: 1rem;
-    background-color: $secondary-color;
-    z-index: 3;
-    color: #fff;
-    border-color: transparent;
-    font-family: sans-serif;
-    user-select: none;
+.page-item.active .page-link {
+  color: $black;
+
+  background-color: $main-color;
+  ;
+}
+.page-item .page-link {
+  z-index: 3;
+
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #ffffff;
+
+  background-color: $secondary-color;
+  border-color: transparent;
+  cursor: auto;
+
+  user-select: none;
 }
