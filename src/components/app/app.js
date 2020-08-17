@@ -86,7 +86,7 @@ export default class App extends Component  {
         const { bird, birds, selectedBird, score, page } = this.state
         return (
             <div className="container-md">
-                <Header  score={score} checked={this.state.correct}/>
+                <Header  score={score} checked={this.state.correct} page={page}/>
                 <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
                 <div className="row mb2">
                     <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>

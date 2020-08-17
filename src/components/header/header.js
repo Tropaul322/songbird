@@ -20,7 +20,7 @@ export default class Header extends Component {
             <span className="score_number">0</span>
           </span>
         </div>
-        <Navigation />
+        <Navigation page={this.props.page}/>
       </header>
     );
   };
