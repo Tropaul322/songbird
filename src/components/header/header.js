@@ -3,14 +3,15 @@ import Navigation from '../navigation/index';
 import './header.scss';
 
 export default class Header extends Component {
-
   componentDidUpdate() {
-    if (this.props.checked) {
-      document.querySelector('.score_number').innerText = this.props.score;
+    const { checked, score } = this.props;
+    if (checked) {
+      document.querySelector('.score_number').innerText = score;
     };
   };
 
   render() {
+    const { page } = this.props;
     return (
       <header className="header d-flex">
         <div className="top-panel d-flex">
@@ -20,7 +21,7 @@ export default class Header extends Component {
             <span className="score_number">0</span>
           </span>
         </div>
-        <Navigation page={this.props.page}/>
+        <Navigation page={page} />
       </header>
     );
   };

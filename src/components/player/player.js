@@ -47,7 +47,7 @@ export default class Player extends Component{
     } else return false;
   };
 
-  onPlayClick = () =>{
+  onPlayClick = () => {
     this.updateSeekBar();
     const {audio, volume} = this.state;
     this.changeIcon();

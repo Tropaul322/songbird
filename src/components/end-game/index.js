@@ -1,3 +1,3 @@
-import EndGame from "../end-game/endGame";
+import EndGame from './endGame';
 
-export default EndGame
+export default EndGame;

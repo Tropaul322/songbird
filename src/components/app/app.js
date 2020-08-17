@@ -14,10 +14,10 @@ export default class App extends Component  {
         super();
         this.state = {
             birds: this.generateBirds(0),
-            score: 35,
+            score: 0,
             bird: this.getRandomBird(0),
             selectedBird: null,
-            page: 6,
+            page: 0,
             correct: false,
             id: null,
             attempts: 1,
@@ -91,7 +91,7 @@ export default class App extends Component  {
     };
 
     restartGame = ()=> {
-        const page = 1
+        const page = 0
         this.setState({
             page: 1,
             score: 0,

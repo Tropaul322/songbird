@@ -3,12 +3,13 @@ import './bird-info.scss';
 import BirdInfoPlayer from '../bird-info-player/index';
 
 export default class BirdInfo extends Component {
-
   render() {
     const { bird } = this.props;
 
     const View = ({ bird }) => {
-      const { name, description, image, species, id } = bird;
+      const {
+        name, description, image, species,
+      } = bird;
 
       return (
         <div className="bird-info card">
@@ -23,15 +24,24 @@ export default class BirdInfo extends Component {
             </ul>
           </div>
           <span className="bird-description">{description}</span>
-          </div>
+        </div>
       );
     };
-
-    const data = this.props.bird ? <View bird={bird} /> :  <div className="choose_wrapper"><div className='chooseBlock'>Listen to the player.<br></br>And guess the bird. </div> </div>;
+    const data = bird ? <View bird={bird} /> : (
+      <div className="choose_wrapper">
+        <div className="chooseBlock">
+          Listen to the player.
+          <br />
+          And guess the bird.
+          {' '}
+        </div>
+        {' '}
+      </div>
+    );
 
     return (
       <div className="col-md-6 mb">
-          {data}
+        {data}
       </div>
     );
   };

@@ -90,8 +90,8 @@ export default class BirdInfoPlayer extends Component{
           this.setState({
               currentTime: curTime,
             });
-        }
-    }
+        };
+    };
   };
 
   updatePosition = (audio) => {
@@ -180,21 +180,20 @@ export default class BirdInfoPlayer extends Component{
       </div>
       ) : null;
     const player = duration ? (<div className="bird-audio-player">
-                            <div className="bird-wrapper">
-                            <div className="bird-button" onClick={this.onPlayClick}><img className="bird-toggle_img" src={icon} /></div>
-                            <div className="bird-seek-bar">
-
-                              <span className="bird-audio-bar"><span className='bird-fill'></span></span>
-                              <input className="bird-audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
-                            </div>
-                            <div className="bird-volume-button" onClick={this.onVolumeClick} ><img className="bird-volume-toggle_img" src={volume} /></div>
-                              {volumeBar}
-                            </div>
-                            <div className="bird-time">
-                              <span className="bird-currentTime">{currentTime}</span>
-                              <span className="bird-duration">{duration}</span>
-                            </div>
-                            </div>) 
+                                  <div className="bird-wrapper">
+                                  <div className="bird-button" onClick={this.onPlayClick}><img className="bird-toggle_img" src={icon} /></div>
+                                  <div className="bird-seek-bar">
+                                    <span className="bird-audio-bar"><span className='bird-fill'></span></span>
+                                    <input className="bird-audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
+                                  </div>
+                                  <div className="bird-volume-button" onClick={this.onVolumeClick} ><img className="bird-volume-toggle_img" src={volume} /></div>
+                                    {volumeBar}
+                                  </div>
+                                  <div className="bird-time">
+                                    <span className="bird-currentTime">{currentTime}</span>
+                                    <span className="bird-duration">{duration}</span>
+                                  </div>
+                                </div>) 
                             : 'Loading';
     return (
       <>
