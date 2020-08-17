@@ -3,40 +3,29 @@ import stopButton from '../../assets/images/pause.png';
 import playButton from '../../assets/images/video.png';
 import volume from '../../assets/images/sound.png';
 import noVolume from '../../assets/images/no-sound.png';
-import './player.scss'
-import '../../css-constants/index.scss'
+import './bird-info-player.scss'
 
-export default class Player extends Component{
+
+export default class BirdInfoPlayer extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      bird: props.bird,
       isPlaying: false,
-      audio: new Audio(`${props.bird.audio}`),
+      audio: new Audio(`${props.bird.audio}`),  
       currentTime: '00:00',
       duration: null,
       volume: 0.5,
       handle: 0,
-      isVolume: false
+      isVolume: false,
     };
+  };
+
+  componentWillUnmount(){
+    this.state.audio.pause();
   };
 
   componentDidMount(){
-    this.getDuration();
-  };
-
-  componentDidUpdate(prevProps, prevState){
-    if(this.props.bird !== prevProps.bird){
-      this.setState({
-        audio: new Audio(`${this.props.bird.audio}`),
-        currentTime: '00:00',
-        isPlaying: false,
-        duration:'',
-      });
-      this.state.audio.pause();
-      
-    };
     this.getDuration();
   };
 
@@ -48,8 +37,8 @@ export default class Player extends Component{
   };
 
   onPlayClick = () =>{
-    this.updateSeekBar();
     const {audio, volume} = this.state;
+    this.updateSeekBar();
     this.changeIcon();
     if (this.checkStatus()){
       audio.play();
@@ -64,7 +53,7 @@ export default class Player extends Component{
   };
 
   updateSeekBar = () => {
-    if (document.querySelector('.audio-slider')) {
+    if (document.querySelector('.bird-audio-slider')) {
       const { audio } = this.state;
       audio.addEventListener('timeupdate', () => {
         this.onFinish();
@@ -75,7 +64,7 @@ export default class Player extends Component{
   };
 
   updateCurrentTime = (audio) => {
-    if (document.querySelector('.audio-slider')) {
+    if (document.querySelector('.bird-audio-slider')) {
       if ( Math.floor(audio.currentTime) > 0 && Math.floor(audio.currentTime) < 10 ) {
           const curTime = `00:0${Math.floor(audio.currentTime)}`;
           this.setState({
@@ -101,14 +90,14 @@ export default class Player extends Component{
           this.setState({
               currentTime: curTime,
             });
-        };
-    };
+        }
+    }
   };
 
   updatePosition = (audio) => {
-    if (document.querySelector('.audio-slider')) {
-      const fillBar = document.querySelector('.fill');
-      const bar = document.querySelector('.audio-slider');
+    if (document.querySelector('.bird-audio-slider')) {
+      const fillBar = document.querySelector('.bird-fill');
+      const bar = document.querySelector('.bird-audio-slider');
       const position = audio.currentTime / audio.duration;
       bar.value = audio.currentTime;
       fillBar.style.width = `${Math.ceil(position * 100)}%`;
@@ -156,21 +145,20 @@ export default class Player extends Component{
 
   onChangeValue(e) {
     const { audio  } = this.state;
-    const img = document.querySelector('.volume-toggle_img');
+    const img = document.querySelector('.bird-volume-toggle_img');
     audio.volume = e.target.value;
     if(audio.volume === 0){
-      img.src = noVolume
+      img.src = noVolume;
     } else {
-      img.src = volume 
+      img.src = volume ;
     };
-    document.querySelector('.volume-fill').style.width = `${e.target.value * 100}%`;
+    document.querySelector('.bird-volume-fill').style.width = `${e.target.value * 100}%`;
   };
 
   changeValue(){
-    const { audio  } = this.state;
-    const bar = document.querySelector('.audio-slider');
-    const fillBar = document.querySelector('.fill');
-    bar.step = '0.01';
+    const { audio } = this.state;
+    const bar = document.querySelector('.bird-audio-slider');
+    const fillBar = document.querySelector('.bird-fill');
     const position = audio.currentTime / audio.duration;
     fillBar.style.width = `${Math.ceil(position * 100)}%`;
     audio.currentTime = bar.value;
@@ -184,31 +172,30 @@ export default class Player extends Component{
 
   render(){
     const {isPlaying, currentTime, duration, handle, isVolume} = this.state;
-
-    const volumeBar = isVolume ? (
-                            <div className="slider-container">
-                              <span className="bar"><span className='volume-fill'></span></span>
-                              <input className="slider" defaultValue="0.5" type="range" min="0" max="1"step='0.1' onChange={(e) => this.onChangeValue(e)}></input>
-                            </div>
-                            ) : null;
-
     const icon = isPlaying ? stopButton : playButton ;
-    const player = duration ? (<div className="audio-player">
-                            <div className="wrapper">
-                            <div className="button" onClick={this.onPlayClick}><img className="toggle_img" src={icon} /></div>
-                            <div className="seek-bar">
-                              <span className="audio-bar"><span className='fill'></span></span>
-                              <input className="audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
+    const volumeBar = isVolume ? (
+      <div className="bird-slider-container">
+        <span className="bird-bar"><span className='bird-volume-fill'></span></span>
+        <input className="bird-slider" defaultValue="0.5" type="range" min="0" max="1"step='0.1' onChange={(e) => this.onChangeValue(e)}></input>
+      </div>
+      ) : null;
+    const player = duration ? (<div className="bird-audio-player">
+                            <div className="bird-wrapper">
+                            <div className="bird-button" onClick={this.onPlayClick}><img className="bird-toggle_img" src={icon} /></div>
+                            <div className="bird-seek-bar">
+
+                              <span className="bird-audio-bar"><span className='bird-fill'></span></span>
+                              <input className="bird-audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
                             </div>
-                            <div className="volume-button" onClick={this.onVolumeClick} ><img className="volume-toggle_img" src={volume} /></div>
+                            <div className="bird-volume-button" onClick={this.onVolumeClick} ><img className="bird-volume-toggle_img" src={volume} /></div>
                               {volumeBar}
                             </div>
-                            <div className="time">
-                              <span className="currentTime">{currentTime}</span>
-                              <span className="duration">{duration}</span>
+                            <div className="bird-time">
+                              <span className="bird-currentTime">{currentTime}</span>
+                              <span className="bird-duration">{duration}</span>
                             </div>
                             </div>) 
-                            : 'Loading'
+                            : 'Loading';
     return (
       <>
         {player}
