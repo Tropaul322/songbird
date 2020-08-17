@@ -1,6 +1,8 @@
 @import "../../css-constants/index.scss";
 .jumbotron {
   padding: .75rem;
+
+  border: 1px solid $border;
 }
 
 .bird-img {

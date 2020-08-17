@@ -11,7 +11,7 @@ export default class BirdInfo extends Component {
       const { name, description, image, species, id } = bird;
 
       return (
-        <div className="bird-info card" key={id}>
+        <div className="bird-info card">
           <div className="card-body">
             <img className="card-body_img" src={image} />
             <ul className="list-group list-group-flush card-group">
@@ -23,17 +23,15 @@ export default class BirdInfo extends Component {
             </ul>
           </div>
           <span className="bird-description">{description}</span>
-        </div>
+          </div>
       );
     };
 
-    const data = this.props.bird ? <View bird={bird} /> : 'Choose bird';
+    const data = this.props.bird ? <View bird={bird} /> :  <div className="choose_wrapper"><div className='chooseBlock'>Listen to the player.<br></br>And guess the bird. </div> </div>;
 
     return (
-      <div className="col-md-6">
-        <div className="bird-info card non-select">
+      <div className="col-md-6 mb">
           {data}
-        </div>
       </div>
     );
   };

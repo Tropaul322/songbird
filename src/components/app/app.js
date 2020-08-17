@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RandomBird from '../random-bird/index'
 import Header from '../header/index';
+import './app.scss'
 import AnswerBlock from '../answer-block/index';
 import NextButton from '../next-button/index'
 import BirdInfo from '../bird-info/index'
@@ -85,13 +86,15 @@ export default class App extends Component  {
     render(){
         const { bird, birds, selectedBird, score, page } = this.state
         return (
-            <div className="container-md">
-                <Header  score={score} checked={this.state.correct} page={page}/>
-                <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
-                <div className="row mb2">
-                    <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
-                    <BirdInfo bird={selectedBird} />
-                    <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
+            <div className="blur">
+                <div className="container-md">
+                    <Header  score={score} checked={this.state.correct} page={page}/>
+                    <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
+                    <div className="row mb2">
+                        <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
+                        <BirdInfo bird={selectedBird} />
+                        <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
+                    </div>
                 </div>
             </div>
         );
