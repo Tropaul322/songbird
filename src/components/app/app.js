@@ -6,6 +6,7 @@ import AnswerBlock from '../answer-block/index';
 import NextButton from '../next-button/index'
 import BirdInfo from '../bird-info/index'
 import birdData from '../../data/birdData';
+import EndGame from '../end-game/index'
 
 
 export default class App extends Component  {
@@ -13,10 +14,10 @@ export default class App extends Component  {
         super();
         this.state = {
             birds: this.generateBirds(0),
-            score: 0,
+            score: 35,
             bird: this.getRandomBird(0),
             selectedBird: null,
-            page: 0,
+            page: 6,
             correct: false,
             id: null,
             attempts: 1,
@@ -70,6 +71,7 @@ export default class App extends Component  {
     
     changePage = () => {
         const page = this.state.page + 1
+        if(page < 6 ){
         setTimeout( 
             this.setState({
                 page: page,
@@ -81,20 +83,42 @@ export default class App extends Component  {
                 attempts: 1,
             }),
         300) 
+        } else if (page === 6) {
+            this.setState({
+                page: 6
+            })
+        }
     };
+
+    restartGame = ()=> {
+        const page = 1
+        this.setState({
+            page: 1,
+            score: 0,
+            birds: this.generateBirds(page),
+            bird: this.getRandomBird(page),
+            selectedBird: null,
+            correct: false,
+            id: null,
+            attempts: 1,
+        });
+    };
+    
 
     render(){
         const { bird, birds, selectedBird, score, page } = this.state
+        const content = (page === 6) ? <><EndGame score={score} restartGame={this.restartGame} /></> :( <><Header  score={score} checked={this.state.correct} page={page}/>
+                                                    <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
+                                                    <div className="row mb2">
+                                                        <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
+                                                        <BirdInfo bird={selectedBird} />
+                                                        <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
+                                                    </div></>)
+                                                    
         return (
             <div className="blur">
                 <div className="container-md">
-                    <Header  score={score} checked={this.state.correct} page={page}/>
-                    <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
-                    <div className="row mb2">
-                        <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
-                        <BirdInfo bird={selectedBird} />
-                        <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
-                    </div>
+                    {content}
                 </div>
             </div>
         );
