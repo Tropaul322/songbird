@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './navigation.scss';
 
 export default class Navigation extends Component {
   componentDidMount() {
     const a = document.querySelectorAll('.pagination li');
     a[0].classList.add('active');
-  };
+  }
 
   componentDidUpdate(prevProps) {
     const { page } = this.props;
@@ -14,8 +15,8 @@ export default class Navigation extends Component {
       const a = document.querySelectorAll('.pagination li');
       a[page - 1].classList.remove('active');
       a[page].classList.add('active');
-    };
-  };
+    }
+  }
 
   render() {
     return (
@@ -28,5 +29,8 @@ export default class Navigation extends Component {
         <li className="navigation_list-item page-item"><span className="page-link">Морские птицы</span></li>
       </ul>
     );
-  };
+  }
+}
+Navigation.propTypes = {
+  page: PropTypes.number.isRequired,
 };

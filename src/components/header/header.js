@@ -7,8 +7,8 @@ export default class Header extends Component {
     const { checked, score } = this.props;
     if (checked) {
       document.querySelector('.score_number').innerText = score;
-    };
-  };
+    }
+  }
 
   render() {
     const { page } = this.props;
@@ -24,5 +24,5 @@ export default class Header extends Component {
         <Navigation page={page} />
       </header>
     );
-  };
-};
+  }
+}

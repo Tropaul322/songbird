@@ -44,5 +44,5 @@ export default class BirdInfo extends Component {
         {data}
       </div>
     );
-  };
-};
+  }
+}

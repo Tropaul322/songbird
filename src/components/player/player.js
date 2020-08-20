@@ -6,7 +6,7 @@ import noVolume from '../../assets/images/no-sound.png';
 import './player.scss'
 import '../../css-constants/index.scss'
 
-export default class Player extends Component{
+export default class Player extends Component {
 
   constructor(props) {
     super(props);
@@ -87,21 +87,42 @@ export default class Player extends Component{
               currentTime: curTime,
             });
       } else if ( Math.floor(audio.currentTime) > 59 && Math.floor(audio.currentTime) < 119 ) {
+        if(Math.floor(audio.currentTime) - 60 < 10) {
           const curTime = `01:0${Math.floor(audio.currentTime) - 60}`;
           this.setState({
               currentTime: curTime,
             });
-      } else if ( Math.floor(audio.currentTime) > 119 && Math.floor(audio.currentTime) < 179 ) {
-          const curTime = `02:${Math.floor(audio.currentTime) - 120}`;
-          this.setState({
-              currentTime: curTime,
-            });
-      } else if ( Math.floor(audio.currentTime) > 179 && Math.floor(audio.currentTime) < 239 ) {
-          const curTime = `03:${Math.floor(audio.currentTime) - 180}`;
-          this.setState({
-              currentTime: curTime,
-            });
-        };
+        } else {
+        const curTime = `01:${Math.floor(audio.currentTime) - 60}`;
+        this.setState({
+            currentTime: curTime,
+          });
+        }
+    } else if ( Math.floor(audio.currentTime) > 119 && Math.floor(audio.currentTime) < 179 ) {
+      if(Math.floor(audio.currentTime) - 120 < 10) {
+        const curTime = `02:0${Math.floor(audio.currentTime) - 120}`;
+        this.setState({
+            currentTime: curTime,
+          });
+      } else {
+      const curTime = `02:${Math.floor(audio.currentTime) - 120}`;
+      this.setState({
+          currentTime: curTime,
+        });
+      }
+    } else if ( Math.floor(audio.currentTime) > 179 && Math.floor(audio.currentTime) < 239 ) {
+      if(Math.floor(audio.currentTime) - 180 < 10) {
+        const curTime = `03:0${Math.floor(audio.currentTime) - 180}`;
+        this.setState({
+            currentTime: curTime,
+          });
+      } else {
+      const curTime = `03:${Math.floor(audio.currentTime) - 180}`;
+      this.setState({
+          currentTime: curTime,
+        });
+      }
+      };
     };
   };
 
@@ -131,25 +152,51 @@ export default class Player extends Component{
         handle: Math.floor(audio.duration)
       });
       if(Math.floor(audio.duration) > 59 && Math.floor(audio.duration) < 119) {
-        this.setState({
-          duration: `01:${Math.floor(audio.duration) - 60}`,
-        });
+        if ((Math.floor(audio.duration) - 60) < 10) {
+          this.setState({
+            duration: `01:0${Math.floor(audio.duration) - 60}`,
+          });
+        } else{ this.setState({
+            duration: `01:${Math.floor(audio.duration) - 60}`,
+          });
+        }
       }else if(Math.floor(audio.duration) > 119 && Math.floor(audio.duration) < 179) {
-        this.setState({
-          duration: `02:${Math.floor(audio.duration) - 120}`,
-        });
+        if ((Math.floor(audio.duration) - 120) < 10) {
+          this.setState({
+            duration: `02:0${Math.floor(audio.duration) - 120}`,
+          });
+        } else{ this.setState({
+            duration: `02:${Math.floor(audio.duration) - 120}`,
+          });
+        }
       }else if(Math.floor(audio.duration) > 179 && Math.floor(audio.duration) < 239) {
-        this.setState({
-          duration: `03:${Math.floor(audio.duration) - 180}`,
-        });
+        if ((Math.floor(audio.duration) - 180) < 10) {
+          this.setState({
+            duration: `03:0${Math.floor(audio.duration) - 180}`,
+          });
+        } else{ this.setState({
+            duration: `03:${Math.floor(audio.duration) - 180}`,
+          });
+        }
       }else if(Math.floor(audio.duration) > 239) {
-        this.setState({
-          duration: `04:${Math.floor(audio.duration) - 240}`,
-        });
+        if ((Math.floor(audio.duration) - 240) < 10) {
+          this.setState({
+            duration: `04:0${Math.floor(audio.duration) - 240}`,
+          });
+        } else{ this.setState({
+            duration: `04:${Math.floor(audio.duration) - 240}`,
+          });
+        }
       }else {
-        this.setState({
-          duration: `00:${Math.floor(audio.duration)}`,
-        });
+        if(Math.floor(audio.duration) < 10) {
+          this.setState({
+            duration: `00:0${Math.floor(audio.duration)}`,
+          });
+        } else{ 
+          this.setState({
+            duration: `00:${Math.floor(audio.duration)}`,
+          });
+        }
       };
     });
   };
@@ -165,9 +212,18 @@ export default class Player extends Component{
     };
     document.querySelector('.volume-fill').style.width = `${e.target.value * 100}%`;
   };
+  onSliderChange(){
+    const {audio} = this.state;
+    this.setState({
+      isPlaying: true,
+    });
+    this.updateSeekBar();
+    audio.play()
+  }
 
   changeValue(){
     const { audio  } = this.state;
+    this.onSliderChange()
     const bar = document.querySelector('.audio-slider');
     const fillBar = document.querySelector('.fill');
     bar.step = '0.01';
@@ -177,9 +233,13 @@ export default class Player extends Component{
   };
 
   onVolumeClick = () => {
+    const { audio  } = this.state;
+   
     this.setState(({ isVolume }) => ({
       isVolume: !isVolume,
     }));
+    audio.volume = 1
+    
   };
 
   render(){

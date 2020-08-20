@@ -27,7 +27,7 @@ module.exports = (env, options) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(png|svg|ico|jpe?g|gif)$/,
+          test: /\.(png|svg|mp3|ico|jpe?g|gif)$/,
           use: [
             {
               loader: 'file-loader',
@@ -36,6 +36,10 @@ module.exports = (env, options) => {
               },
             },
           ],
+        },
+        {
+          test: /\.mp3$/,
+          loader: 'file-loader'
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -79,7 +83,7 @@ module.exports = (env, options) => {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './public/index.html',
-        /* favicon: 'src/assets/favicon/favicon.ico', */
+        favicon: 'src/assets/favicon/favicon.ico',
         chunks: ['index'],
       }),
       new CopyPlugin({
