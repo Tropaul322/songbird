@@ -14,8 +14,8 @@ export default class Navigation extends Component {
       const a = document.querySelectorAll('.pagination li');
       a[page - 1].classList.remove('active');
       a[page].classList.add('active');
-    }
-  }
+    };
+  };
 
   render() {
     return (
@@ -28,8 +28,9 @@ export default class Navigation extends Component {
         <li className="navigation_list-item page-item"><span className="page-link">Морские птицы</span></li>
       </ul>
     );
-  }
-}
+  };
+};
+
 Navigation.propTypes = {
   page: PropTypes.number.isRequired,
 };

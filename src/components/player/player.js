@@ -35,8 +35,6 @@ export default class Player extends Component {
         duration:'',
       });
       this.state.audio.pause();
-      
-      
     };
     this.getDuration();
     const { audio } = this.state
@@ -46,8 +44,8 @@ export default class Player extends Component {
       this.setState({
         currentTime: '00:00',
         isPlaying: false
-      })
-    }
+      });
+    };
   };
 
   checkStatus(){
@@ -206,7 +204,7 @@ export default class Player extends Component {
           this.setState({
             duration: `00:${Math.floor(audio.duration)}`,
           });
-        }
+        };
       };
     });
   };
@@ -222,18 +220,19 @@ export default class Player extends Component {
     };
     document.querySelector('.volume-fill').style.width = `${e.target.value * 100}%`;
   };
+
   onSliderChange(){
     const {audio} = this.state;
     this.setState({
       isPlaying: true,
     });
     this.updateSeekBar();
-    audio.play()
-  }
+    audio.play();
+  };
 
   changeValue(){
     const { audio  } = this.state;
-    this.onSliderChange()
+    this.onSliderChange();
     const bar = document.querySelector('.audio-slider');
     const fillBar = document.querySelector('.fill');
     bar.step = '0.01';
@@ -244,12 +243,10 @@ export default class Player extends Component {
 
   onVolumeClick = () => {
     const { audio  } = this.state;
-   
     this.setState(({ isVolume }) => ({
       isVolume: !isVolume,
     }));
     audio.volume = 1
-    
   };
 
   render(){

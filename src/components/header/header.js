@@ -4,12 +4,13 @@ import Navigation from '../navigation/index';
 import './header.scss';
 
 export default class Header extends Component {
+  
   componentDidUpdate() {
     const { checked, score } = this.props;
     if (checked) {
       document.querySelector('.score_number').innerText = score;
-    }
-  }
+    };
+  };
 
   render() {
     const { page } = this.props;
@@ -25,8 +26,9 @@ export default class Header extends Component {
         <Navigation page={page} />
       </header>
     );
-  }
-}
+  };
+};
+
 Header.propTypes = {
   page: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,

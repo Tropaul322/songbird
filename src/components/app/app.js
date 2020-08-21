@@ -16,7 +16,7 @@ export default class App extends Component  {
             score: 0,
             bird: this.getRandomBird(0),
             selectedBird: {name: '', description: '', image: '', species: ''},
-            page: 5,
+            page: 0,
             correct: false,
             id: null,
             attempts: 1,
@@ -58,7 +58,7 @@ export default class App extends Component  {
                 }));
                 if(this.state.id !== id){
                     wrong.play();
-                } return
+                } return;
             };
         };
     };
@@ -81,10 +81,10 @@ export default class App extends Component  {
     };
     
     changePage = () => {
-        const win = document.querySelector('#win')
-        win.pause()
-        win.currentTime = 0
-        const page = this.state.page + 1
+        const win = document.querySelector('#win');
+        win.pause();
+        win.currentTime = 0;
+        const page = this.state.page + 1;
         if(page < 6 ){
             this.setState({
                 page: page,
@@ -94,12 +94,12 @@ export default class App extends Component  {
                 correct: false,
                 id: null,
                 attempts: 1,
-            })
+            });
         } else if (page === 6) {
             this.setState({
                 page: 6
-            })
-        }
+            });
+        };
     };
 
     restartGame = ()=> {
@@ -120,15 +120,16 @@ export default class App extends Component  {
     render(){
         const { bird, birds, selectedBird, score, page } = this.state
         const content = (page === 6) ? <><EndGame score={score} restartGame={this.restartGame} /></> 
-        :( <><Header  score={score} checked={this.state.correct} page={page}/>
-            <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
-            <div className="row mb2">
-                <audio id="win" preload="auto" src={`https://www.myinstants.com/media/sounds/correct_F5OqKUF.mp3`}></audio>
-                <audio id="wrong" preload="auto" src={`http://www.orangefreesounds.com/wp-content/uploads/2018/06/Error-sound.mp3?_=0.5`}></audio>
-                <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
-                <BirdInfo bird={selectedBird} />
-                <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
-            </div>
+        :(  <>
+                <Header  score={score} checked={this.state.correct} page={page}/>
+                <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
+                    <div className="row mb2">
+                        <audio id="win" preload="auto" src={`https://www.myinstants.com/media/sounds/correct_F5OqKUF.mp3`}></audio>
+                        <audio id="wrong" preload="auto" src={`http://www.orangefreesounds.com/wp-content/uploads/2018/06/Error-sound.mp3?_=0.5`}></audio>
+                        <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
+                        <BirdInfo bird={selectedBird} />
+                        <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
+                     </div>
             </>)
                                                     
         return (

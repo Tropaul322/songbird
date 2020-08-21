@@ -23,8 +23,8 @@ export default class BirdInfoPlayer extends Component{
 
   
   componentWillUnmount(){
-    this.state.audio.pause()
-  }
+    this.state.audio.pause();
+  };
   
   componentDidMount(){
     setTimeout(this.getDuration(), 1000);
@@ -187,7 +187,7 @@ export default class BirdInfoPlayer extends Component{
           this.setState({
             duration: `00:${Math.floor(audio.duration)}`,
           });
-        }
+        };
       };
     });
   };
@@ -209,12 +209,12 @@ export default class BirdInfoPlayer extends Component{
       isPlaying: true,
     });
     this.updateSeekBar();
-    audio.play()
-  }
+    audio.play();
+  };
 
   changeValue(){
     const { audio } = this.state;
-    this.onSliderChange()
+    this.onSliderChange();
     const bar = document.querySelector('.bird-audio-slider');
     const fillBar = document.querySelector('.bird-fill');
     const position = audio.currentTime / audio.duration;
@@ -237,6 +237,7 @@ export default class BirdInfoPlayer extends Component{
         <input className="bird-slider" defaultValue="0.5" type="range" min="0" max="1"step='0.1' onChange={(e) => this.onChangeValue(e)}></input>
       </div>
       ) : null;
+
     const player = duration ? (<div className="bird-audio-player">
                                   <div className="bird-wrapper">
                                   <div className="bird-button" onClick={this.onPlayClick}><img className="bird-toggle_img" src={icon} /></div>

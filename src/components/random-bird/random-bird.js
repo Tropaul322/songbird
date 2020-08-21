@@ -6,6 +6,7 @@ import Player from '../player/index';
 import './random-bird.scss';
 
 export default class RandomBird extends Component {
+
   render() {
     const { checked, bird } = this.props;
 
@@ -25,8 +26,8 @@ export default class RandomBird extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 RandomBird.propTypes = {
   bird: PropTypes.shape({

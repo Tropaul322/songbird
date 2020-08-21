@@ -8,6 +8,7 @@ export default class EndGame extends Component {
   componentDidMount(){
     document.querySelector('.end_audio').volume=0.1
   }
+  
   render() {
     const { score, restartGame } = this.props;
     const title = score === 30 ? (
@@ -39,8 +40,9 @@ export default class EndGame extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
+
 EndGame.propTypes = {
   score: PropTypes.number.isRequired,
   restartGame: PropTypes.func.isRequired,

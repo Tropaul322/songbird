@@ -28,6 +28,7 @@ export default class BirdInfo extends Component {
         </div>
       );
     };
+    
     const data = (bird.name !== '') ? <View bird={bird} /> : (
       <div className="choose_wrapper">
         <div className="chooseBlock">
@@ -45,8 +46,9 @@ export default class BirdInfo extends Component {
         {data}
       </div>
     );
-  }
-}
+  };
+};
+
 BirdInfo.propTypes = {
   bird: PropTypes.shape({
     name: PropTypes.string.isRequired,
