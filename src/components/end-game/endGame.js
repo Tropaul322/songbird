@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './endGame.scss';
+import PropTypes from 'prop-types';
 import like from '../../assets/images/tenor.gif';
 import dicaprio from '../../assets/images/giphy.gif';
 
@@ -35,5 +36,9 @@ export default class EndGame extends Component {
         </div>
       </div>
     );
-  };
+  }
+}
+EndGame.propTypes = {
+  score: PropTypes.number.isRequired,
+  restartGame: PropTypes.func.isRequired,
 };

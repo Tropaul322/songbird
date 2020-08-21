@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Navigation from '../navigation/index';
 import './header.scss';
 
@@ -26,3 +27,8 @@ export default class Header extends Component {
     );
   }
 }
+Header.propTypes = {
+  page: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  checked: PropTypes.bool.isRequired,
+};

@@ -18,7 +18,7 @@ export default class Player extends Component {
       duration: null,
       volume: 0.5,
       handle: 0,
-      isVolume: false
+      isVolume: false,
     };
   };
 
@@ -36,8 +36,18 @@ export default class Player extends Component {
       });
       this.state.audio.pause();
       
+      
     };
     this.getDuration();
+    const { audio } = this.state
+    if(this.props.correct !== prevProps.correct){
+      audio.pause();
+      audio.currentTime = 0
+      this.setState({
+        currentTime: '00:00',
+        isPlaying: false
+      })
+    }
   };
 
   checkStatus(){
@@ -64,8 +74,8 @@ export default class Player extends Component {
   };
 
   updateSeekBar = () => {
-    if (document.querySelector('.audio-slider')) {
-      const { audio } = this.state;
+    if (document.querySelector('.audio-slider')) {    
+      const { audio } = this.state;    
       audio.addEventListener('timeupdate', () => {
         this.onFinish();
         this.updatePosition(audio);

@@ -11,7 +11,6 @@ export default class Navigation extends Component {
   componentDidUpdate(prevProps) {
     const { page } = this.props;
     if (page !== prevProps.page) {
-      const { page } = this.props;
       const a = document.querySelectorAll('.pagination li');
       a[page - 1].classList.remove('active');
       a[page].classList.add('active');

@@ -21,12 +21,14 @@ export default class BirdInfoPlayer extends Component{
     };
   };
 
+  
   componentWillUnmount(){
-    this.state.audio.pause();
-  };
-
+    this.state.audio.pause()
+  }
+  
   componentDidMount(){
-    this.getDuration();
+    setTimeout(this.getDuration(), 1000);
+    console.log('object');
   };
 
   checkStatus(){
