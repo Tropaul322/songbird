@@ -124,7 +124,7 @@ export default class App extends Component  {
             <RandomBird bird={bird}  checked={this.state.correct} score={score}/>
             <div className="row mb2">
                 <audio id="win" preload="auto" src={`https://www.myinstants.com/media/sounds/correct_F5OqKUF.mp3`}></audio>
-                <audio id="wrong" preload="auto" src={/* `http://www.orangefreesounds.com/wp-content/uploads/2018/06/Error-sound.mp3?_=0.5` */`https://www.myinstants.com/media/sounds/surprise-motherfucka.mp3`}></audio>
+                <audio id="wrong" preload="auto" src={`http://www.orangefreesounds.com/wp-content/uploads/2018/06/Error-sound.mp3?_=0.5`}></audio>
                 <AnswerBlock birds={birds} onItem={this.onBirdSelected} page={page}/>
                 <BirdInfo bird={selectedBird} />
                 <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
