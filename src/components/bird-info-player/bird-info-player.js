@@ -28,7 +28,6 @@ export default class BirdInfoPlayer extends Component{
   
   componentDidMount(){
     setTimeout(this.getDuration(), 1000);
-    console.log('object');
   };
 
   checkStatus(){
