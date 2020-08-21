@@ -16,7 +16,7 @@ export default class App extends Component  {
             score: 0,
             bird: this.getRandomBird(0),
             selectedBird: {name: '', description: '', image: '', species: ''},
-            page: 0,
+            page: 5,
             correct: false,
             id: null,
             attempts: 1,

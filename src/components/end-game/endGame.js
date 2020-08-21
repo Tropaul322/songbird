@@ -5,6 +5,9 @@ import like from '../../assets/images/tenor.gif';
 import dicaprio from '../../assets/images/giphy.gif';
 
 export default class EndGame extends Component {
+  componentDidMount(){
+    document.querySelector('.end_audio').volume=0.1
+  }
   render() {
     const { score, restartGame } = this.props;
     const title = score === 30 ? (
@@ -21,7 +24,7 @@ export default class EndGame extends Component {
     const button = score === 30 ? null : <div className="btn restart_btn" onClick={() => restartGame()}>Restart game</div>;
     return (
       <div className="wrapper">
-        <audio autoPlay="autoplay" src="https://www.myinstants.com/media/sounds/victoryff.swf.mp3" />
+        <audio autoPlay="autoplay" className='end_audio' src="https://www.myinstants.com/media/sounds/victoryff.swf.mp3"/>
         <div className="info">
           <img className="gif" src={gif} alt="gif" />
           <span>{title}</span>
