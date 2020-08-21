@@ -37,9 +37,9 @@ export default class App extends Component  {
     };
     
     checkAnswer(id, e){
-        const win = document.querySelector('#win')
+        const correct = document.querySelector('#win')
         const wrong = document.querySelector('#wrong')
-        win.volume = 0.2;
+        correct.volume = 0.2;
         wrong.volume = 0.2
         if(!this.state.correct) {
             if(id === this.state.bird.id) {
@@ -51,7 +51,7 @@ export default class App extends Component  {
                     score: score
                 });
                 if(this.state.id !== id){
-                    win.play();
+                    correct.play();
                 } return
             }else {
                 e.target.querySelector('.li-btn').classList.add('error');
