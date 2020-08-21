@@ -261,19 +261,19 @@ export default class Player extends Component {
 
     const icon = isPlaying ? stopButton : playButton ;
     const player = duration ? (<div className="audio-player">
-                            <div className="wrapper">
-                            <div className="button" onClick={this.onPlayClick}><img className="toggle_img" src={icon} /></div>
-                            <div className="seek-bar">
-                              <span className="audio-bar"><span className='fill'></span></span>
-                              <input className="audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
-                            </div>
-                            <div className="volume-button" onClick={this.onVolumeClick} ><img className="volume-toggle_img" src={volume} /></div>
-                              {volumeBar}
-                            </div>
-                            <div className="time">
-                              <span className="currentTime">{currentTime}</span>
-                              <span className="duration">{duration}</span>
-                            </div>
+                                <div className="wrapper">
+                                <div className="button" onClick={this.onPlayClick}><img className="toggle_img" src={icon} /></div>
+                                <div className="seek-bar">
+                                  <span className="audio-bar"><span className='fill'></span></span>
+                                  <input className="audio-slider" defaultValue="0" type="range" min="0" max={handle}   onChange={() => this.changeValue()} step="0.05"></input>
+                                </div>
+                                <div className="volume-button" onClick={this.onVolumeClick} ><img className="volume-toggle_img" src={volume} /></div>
+                                  {volumeBar}
+                                </div>
+                                <div className="time">
+                                  <span className="currentTime">{currentTime}</span>
+                                  <span className="duration">{duration}</span>
+                                </div>
                             </div>) 
                             : 'Loading'
     return (

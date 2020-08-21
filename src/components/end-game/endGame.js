@@ -20,7 +20,7 @@ export default class EndGame extends Component {
         {' '}
         Птиц
       </span>
-    ) : 'Отличная работа! Хочешь попробовать снова?';
+    ) : 'Отличная работа! Желаешь попробовать снова?';
     const gif = score === 30 ? dicaprio : like;
     const button = score === 30 ? null : <div className="btn restart_btn" onClick={() => restartGame()}>Restart game</div>;
     return (

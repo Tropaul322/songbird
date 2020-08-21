@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import RandomBird from '../random-bird/index'
+import RandomBird from '../random-bird/index';
+import MainMenu from '../main-menu/index';
 import Header from '../header/index';
 import './app.scss'
 import AnswerBlock from '../answer-block/index';
@@ -7,6 +8,7 @@ import NextButton from '../next-button/index'
 import BirdInfo from '../bird-info/index'
 import birdData from '../../data/birdData';
 import EndGame from '../end-game/index';
+
 
 export default class App extends Component  {
     constructor(){
@@ -16,7 +18,7 @@ export default class App extends Component  {
             score: 0,
             bird: this.getRandomBird(0),
             selectedBird: {name: '', description: '', image: '', species: ''},
-            page: 0,
+            page: 7,
             correct: false,
             id: null,
             attempts: 1,
@@ -65,6 +67,10 @@ export default class App extends Component  {
         };
     };
 
+    startGame = () => {
+        this.restartGame()
+    }
+
     getBird(id){
         const {birds} = this.state;
         const [bird] = birds.filter(item => item.id === id);
@@ -107,7 +113,7 @@ export default class App extends Component  {
     restartGame = ()=> {
         const page = 0
         this.setState({
-            page: 1,
+            page: 0,
             score: 0,
             birds: this.generateBirds(page),
             bird: this.getRandomBird(page),
@@ -133,11 +139,13 @@ export default class App extends Component  {
                         <NextButton changePage={this.changePage} page={page} checked={this.state.correct}/>
                      </div>
             </>)
-                                                    
+        
+        const pageView = (page === 7) ? <><MainMenu startGame={this.startGame}/></> : content
+
         return (
             <div className="blur">
                 <div className="container-md">
-                    {content}
+                    {pageView}
                 </div>
             </div>
         );
