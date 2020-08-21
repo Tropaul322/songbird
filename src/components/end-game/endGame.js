@@ -8,19 +8,19 @@ export default class EndGame extends Component {
   componentDidMount(){
     document.querySelector('.end_audio').volume=0.1
   }
-  
+
   render() {
     const { score, restartGame } = this.props;
     const title = score === 30 ? (
       <span>
-        This is
-        <span className="blue">INSANE</span>
-        . You are the
-        <span className="blue">God</span>
+        Это просто
+        <span className="blue"> Безумие</span>
+        . Ты настоящий
+        <span className="blue"> Король</span>
         {' '}
-        of birds!
+        Птиц
       </span>
-    ) : 'Nice work! Wanna try again?';
+    ) : 'Отличная работа! Хочешь попробовать снова?';
     const gif = score === 30 ? dicaprio : like;
     const button = score === 30 ? null : <div className="btn restart_btn" onClick={() => restartGame()}>Restart game</div>;
     return (
@@ -30,7 +30,7 @@ export default class EndGame extends Component {
           <img className="gif" src={gif} alt="gif" />
           <span>{title}</span>
           <span>
-            Your final Score:
+            Твой окончательный балл:
             {' '}
             {score}
             {' '}

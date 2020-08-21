@@ -28,13 +28,13 @@ export default class BirdInfo extends Component {
         </div>
       );
     };
-    
+
     const data = (bird.name !== '') ? <View bird={bird} /> : (
       <div className="choose_wrapper">
         <div className="chooseBlock">
-          Listen to the player.
+          Послушай плеер.
           <br />
-          And guess the bird.
+          И угадай птицу.
           {' '}
         </div>
         {' '}
