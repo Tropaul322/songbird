@@ -4,6 +4,7 @@
 }
 .info {
   display: flex;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -38,6 +39,11 @@
   border-radius: 5px;
   box-shadow: -1px -1px 22px 0 $main-color;
 
+}
+@media(min-width:320px) and (max-width: 426px){
+  .gif {
+    height: 195px;
+  }
 }
 @media (max-width: 430px) {
   .info {

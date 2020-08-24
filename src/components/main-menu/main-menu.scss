@@ -70,3 +70,31 @@
     transform: scale(1);
   }
 }
+@media(min-width: 320px) and (max-width: 426px) {
+  .menu_info {
+    width: 100%;
+    margin-top: 35px;
+
+    font-size: 1rem;
+  }
+  .menu h1 {
+    font-size: 4rem;
+  }
+  .menu .menu_btn {
+    margin-top: 35px;
+  }
+  .menu{
+    padding-top: 10px;
+  }
+}
+@media(min-width: 425px) and (max-width: 769px) {
+  .menu_info {
+    width: 100%;
+    margin-top: 35px;
+
+    font-size: 1.25rem;
+  }
+}
+/* @media (min-width: 320px) and (max-width: 426px)  {
+  #root{ height: 1652px;}
+} */

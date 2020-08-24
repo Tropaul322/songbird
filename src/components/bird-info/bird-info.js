@@ -42,7 +42,7 @@ export default class BirdInfo extends Component {
     );
     return (
 
-      <div className="col-md-6 mb">
+      <div className="col-md-6 mb info-block">
         {data}
       </div>
     );

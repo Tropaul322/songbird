@@ -43,3 +43,8 @@
     width: 100%;
   }
 }
+@media(min-width: 320px) and (max-width: 426px) {
+  .time {
+    margin: 0 0 8px 0;
+  }
+}
