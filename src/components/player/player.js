@@ -247,6 +247,11 @@ export default class Player extends Component {
       isVolume: !isVolume,
     }));
     audio.volume = 1
+    document.addEventListener('mousedown',() => {
+      this.setState({
+        isVolume: false
+      })
+    } )
   };
 
   render(){
