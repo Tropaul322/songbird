@@ -1,6 +1,6 @@
 @import "../../css-constants/index.scss";
 
-.info-block{
+.info-block {
   height: 318px;
 }
 .bird-info {
@@ -24,6 +24,8 @@
   margin: 0;
 
   border-radius: 10px;
+
+  object-fit: cover;
 }
 .card-body .card-group {
   width: 100%;
@@ -109,7 +111,7 @@
   visibility: hidden;
 }
 @media (max-width: 767px) {
-  .info-block{
+  .info-block {
     height: 560px;
   };
   .bird-info .bird-description {
@@ -145,8 +147,8 @@
 @media (min-width: 768px) and (max-width: 992px) {
   .info-block {
     height: 524px;
-}
-.bird-info .bird-description {
-  height: 180px;
-}
+  }
+  .bird-info .bird-description {
+    height: 180px;
+  }
 }
