@@ -16,13 +16,14 @@ export default class NextButton extends Component {
   };
 
   render() {
-    const { checked, changePage } = this.props;
+    const { checked, changePage,page } = this.props;
     if (checked) {
       document.querySelector('.next-button').disabled = '';
     };
+    const buttonTitle = page === 5 ? 'Подсчитать результат' : 'Следующий уровень'
 
     return (
-      <button type="button" className="btn btn-outline-secondary next-button" onClick={() => setTimeout(changePage(), 300)}>Next Level</button>
+    <button type="button" className="btn btn-outline-secondary next-button" onClick={() => setTimeout(changePage(), 300)}>{buttonTitle}</button>
     );
   };
 };
