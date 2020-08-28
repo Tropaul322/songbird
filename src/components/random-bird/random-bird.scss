@@ -1,0 +1,52 @@
+@import "../../css-constants/index.scss";
+.jumbotron {
+  padding: .75rem;
+
+  border: 1px solid $border;
+}
+
+.bird-img {
+  width: 200px;
+  height: 155px;
+  margin: 0;
+
+  border-radius: 10px;
+
+  object-fit: cover;
+}
+.jumbotron .box {
+  width: 75%;
+}
+.jumbotron .box ul {
+  margin-left: 50px;
+}
+.jumbotron .box ul li {
+  padding: .25rem;
+}
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  margin-top: .5rem;
+}
+@media (max-width: 576px) {
+  .jumbotron {
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+  .jumbotron .box ul {
+    margin: 0;
+  }
+  .jumbotron .box {
+    width: 100%;
+  }
+}
+@media(min-width: 320px) and (max-width: 426px) {
+  .time {
+    margin: 0 0 8px 0;
+  }
+}

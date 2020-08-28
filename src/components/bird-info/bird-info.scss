@@ -1,0 +1,154 @@
+@import "../../css-constants/index.scss";
+
+.info-block {
+  height: 318px;
+}
+.bird-info {
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid $border;
+}
+.bird-info .bird-description {
+  height: 128px;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.card-body {
+  display: flex;
+  padding: 1.4rem 1rem 0 1rem;
+}
+.card-body .card-body_img {
+  width: 200px;
+  height: 155px;
+  margin: 0;
+
+  border-radius: 10px;
+
+  object-fit: cover;
+}
+.card-body .card-group {
+  width: 100%;
+  margin-left: 20px;
+}
+.card-body .card-group li {
+  padding: .15rem;
+}
+.card-body .card-group li h3 {
+  margin: 0;
+  padding: 0;
+}
+.card-body .card-group li h4 {
+  font-size: 1rem;;
+}
+
+.audio-player-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+}
+.audio-player-card .button-card {
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+.audio-player-card .button-card img {
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  color: #54b1c1;
+
+  transition: .2s;
+
+  user-select: none;
+}
+.seek-bar-card {
+  display: flex;
+  width: 75%;
+  height: 5px;
+  margin-left: 1.1rem;
+
+  background-color: gray;
+  border-radius: 50px;
+}
+
+.fill-card {
+  width: 0;
+  height: 5px;
+
+  background-color: $main-color;
+  border-radius: 20px;
+}
+.handle-card {
+  width: 8px;
+  height: 8px;
+  margin-left: 0;
+
+  background-color: $white;
+  border-radius: 50%;
+  transform: scale(2);
+}
+.audio-player-card .button-card:hover img {
+  width: 80%;
+  height: 80%;
+}
+
+.non-select {
+  height: 70%;
+}
+.none {
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .info-block {
+    height: 560px;
+  };
+  .bird-info .bird-description {
+    height: 219px;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .bird-info {
+    height: 100%;
+  }
+  .mb {
+    margin: 25px 0 25px 0;
+  }
+  .chooseBlock {
+    margin-bottom: 55px;
+  }
+}
+@media (max-width: 992px) {
+  .card-body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card-body .card-group li h3 {
+    margin-top: 15px;
+  }
+}
+.chooseBlock {
+  margin-top: 90px;
+
+  font-size: 2rem;
+  text-align: center;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .info-block {
+    height: 524px;
+  }
+  .bird-info .bird-description {
+    height: 180px;
+  }
+}

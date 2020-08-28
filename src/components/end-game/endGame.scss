@@ -1,0 +1,66 @@
+@import "../../css-constants/index.scss";
+.wrapper {
+  height: 100vh;
+}
+.info {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+
+  font-size: 3rem;
+}
+.blue {
+  color: $main-color;
+}
+.restart_btn {
+  width: 85%;
+  margin-top: 15px;
+
+  color: $white;
+
+  background: $secondary-color;
+  border-color: $white;
+
+  transition: .2s ease;
+}
+.restart_btn:active {
+  width: 100%;
+
+  background: $main-color;
+}
+.gif {
+  height: 250px;
+  margin-bottom: 10px;
+
+  border-radius: 5px;
+  box-shadow: -1px -1px 22px 0 $main-color;
+
+}
+@media(min-width:320px) and (max-width: 426px){
+  .gif {
+    height: 195px;
+  }
+}
+@media (max-width: 430px) {
+  .info {
+    margin-bottom: 0;
+
+    font-size: 1rem;
+  }
+}
+@media (min-width: 431px) {
+  .info {
+    margin-bottom: 0;
+
+    font-size: 3rem;
+  }
+}
+.restart_btn {
+  height: 60px;
+
+  font-size: 2rem;
+}
